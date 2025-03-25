@@ -20,6 +20,15 @@ public:
     {
         cout << "Nume: " << nume << ", Varsta: " << varsta << endl;
     }
+
+    //Definim 2 functii care returneaza numele si varsta unui student
+    string GetNume() const {
+        return nume;
+    }
+
+    int GetVarsta() const {
+        return varsta;
+    }
 };
 
 //Clasa derivata
@@ -36,6 +45,16 @@ public:
     void afiseazaInformatii()
     {
         cout << "Nume: " << nume << ", Varsta: " << varsta << ", Medie: "<< medie<<endl;
+    }
+    //Suprascrierea operatorului >
+    bool operator>(const Student& celalalt_obiect) const {
+        return this->medie > celalalt_obiect.medie;
+
+    }
+
+    //Suprascrierea operatorului <
+    bool operator<(const Student& celalalt_obiect1) const {
+        return this->medie < celalalt_obiect1.medie;
     }
 
 };
@@ -66,4 +85,23 @@ int main()
     Admin admin;
     admin.modificaMedie(s2, 5);
     admin.afiseazaDetaliistudent(s2);
+    //Verificam comparatia >
+    if (s1 > s2)
+    {
+        cout << s1.GetNume() << " are media mai mare decat " << s2.GetNume()<< endl;
+    }
+    else
+    {
+        cout << s2.GetNume() << " are media mai mare decat " << s1.GetNume() << endl;
+    }
+
+    //Verificam comparatia <
+    if (s1 < s2)
+    {
+        cout << s1.GetNume() << " are media mai mica decat " << s2.GetNume() << endl;
+    }
+    else
+    {
+        cout << s2.GetNume() << " are media mai mica decat " << s1.GetNume() << endl;
+    }
 }
